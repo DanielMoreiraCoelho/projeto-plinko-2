@@ -9,7 +9,7 @@ var ball;
 var contador  = 0;
 var divisionHeight=300;
 var score =0;
-var estadoDeJogo = jogar, end;
+var estadoDeJogo = "jogar";
 
 function setup() {
   createCanvas(800, 800);
@@ -42,6 +42,11 @@ function draw() {
   textSize(35)
   text("Score : "+score,20,40);
   fill("white")
+
+  if(estadoDeJogo == "end"){
+    textSize(100);
+    text("gameOver", 150, 250);
+  }
 
   textSize(35)
   text(" 500 ", 5, 550);
@@ -83,8 +88,6 @@ function draw() {
         
         if(contador >= 5){
           estadoDeJogo = "end";
-
-          end();
         }
       }
   
@@ -104,12 +107,5 @@ function mousePressed()
   contador++;
 
   ball=new Ball(mouseX, 10, 10, 10);
-  }
-}
-
-function end(){
-  if(estadoDeJogo == "end"){
-    textSize(100);
-    text("gameOver", 150, 250);
   }
 }
